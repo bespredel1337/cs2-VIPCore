@@ -341,14 +341,14 @@ public class VipCore : BasePlugin
     [RequiresPermissions("@css/root")]
     [CommandHelper(1, "<steamid>")]
     [ConsoleCommand("css_reload_vip_player")]
-    public void OnCommandVipReloadInfractions(CCSPlayerController? player, CommandInfo command)
+    public async void OnCommandVipReloadInfractions(CCSPlayerController? player, CommandInfo command)
     {
         var target = Utils.GetPlayerFromSteamId(command.GetArg(1));
 
         if (target == null) return;
         if (target.AuthorizedSteamID == null) return;
 
-        OnClientAuthorizedAsync(target, target.AuthorizedSteamID);
+        await OnClientAuthorizedAsync(target, target.AuthorizedSteamID);
     }
 
     [RequiresPermissions("@css/root")]
